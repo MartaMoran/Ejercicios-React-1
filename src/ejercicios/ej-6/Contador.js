@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Contador = () => {
+    const [cont, setCont]=useState(0);
     
     const sumaClick = () => {
-        // Ingresa aquí tu código para aumentar el contador
+        setCont(cont+1)
     }
 
     return (
         <div className="alert alert-primary">
-            <p><b>Has dado {/* Ingresa aquí el número de clicks */} clicks</b></p>
+            <p><b>Has dado {cont} clicks</b></p>
             <button className="btn btn-info" onClick={sumaClick}>suma 1</button>
         </div>
     );

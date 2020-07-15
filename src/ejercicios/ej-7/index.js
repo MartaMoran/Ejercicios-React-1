@@ -1,9 +1,11 @@
-import React from 'react';
+import React,{useState}  from 'react';
 import Contador from './Contador';
 
 const Ejercicio7 = () => {
+    
+
     return (
-        <Contador />
+        <Contador/>
     );
 };
 
