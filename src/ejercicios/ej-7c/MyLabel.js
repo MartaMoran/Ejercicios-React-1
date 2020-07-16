@@ -1,9 +1,11 @@
 import React from 'react';
 
-const MyLabel = () => {
+class MyLabel extends React.Component {
+    render(){
     return (
-        <p><b>Has dado {/* Ingresa aquí el número de clicks */} clicks</b></p>
+        <p><b>Has dado {this.props.count} clicks</b></p>
     );
+    }
 };
 
 export default MyLabel;
