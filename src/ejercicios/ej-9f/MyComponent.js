@@ -1,16 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {myIp} from '../ej-9f/api'
 
-class MyComponent extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {ipAddress: '...'};
-    }
-
-    render() {
+ const MyComponent= (props)=> {
+   const [ipAddress, setIpAdress]=useState('...')
+       const actualiceIp=async()=>{
+        const result=await myIp()
+        setIpAdress(result)
+       }
+       actualiceIp()
         return (
-            <h1>Mi ip es {this.state.ipAddress}</h1>
+            <h1>Mi ip es {ipAddress}</h1>
         );
-    }
+    
 }
 
 export default MyComponent;
