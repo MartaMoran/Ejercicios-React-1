@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {myIp} from '../ej-9f/api'
 
- const MyComponent= (props)=> {
+ const MyComponent= ()=> {
    const [ipAddress, setIpAdress]=useState('...')
        const actualiceIp=async()=>{
         const result=await myIp()

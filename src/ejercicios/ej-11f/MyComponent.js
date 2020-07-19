@@ -1,19 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
+import myIp from './api';
 
-class MyComponent extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {ipAddress: '...'};
-    }
-
-    render() {
+const  MyComponent =()=>{
+        const [ipAddress, setIpAddress]=useState('...');
+        const getMyIp=async()=>{
+            const result=await myIp();
+            setIpAddress(result);
+        }
+        getMyIp()
+        const emptyIP=ipAddress===('...')
         return (
+        
             <div>
-                <h1>Cargando...</h1>
-                <h1>Mi ip es {this.state.ipAddress}</h1>
+               {emptyIP
+               ?<h1>Cargando...</h1>
+               : <h1>Mi ip es {ipAddress}</h1>
+               }
+                
+               
             </div>
         );
-    }
+    
 }
 
 export default MyComponent;

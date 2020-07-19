@@ -8,7 +8,7 @@ class MyClass extends React.Component {
     }
      async componentDidMount(){
          const result=await myIp()
-         this.setState({...this.state, ipAddress:result})
+         this.setState({ipAddress:result})
      }
 
     render() {

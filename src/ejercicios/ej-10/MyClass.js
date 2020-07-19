@@ -1,15 +1,14 @@
 import React from 'react';
-import {myIpError}  from '../ej-10/api'
+import {myIpError} from './api'
 class MyClass extends React.Component {
     constructor(props) {
         super(props);
         this.state = {ipAddress: '...'};
     }
 
-    ipError =async() =>{
+    async componentDidMount(){
         const result=await myIpError()
-        
-        this.setState({...this.state, ipAddress:result})
+        this.setState({ipAddress:result})
     }
 
 
