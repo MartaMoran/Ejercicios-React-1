@@ -7,11 +7,11 @@ const Ejercicio14 = () => {
     const user = {name: "Pepe José", email: "pepe@jose.com"};
 
     const orders = {total: 12};
-    const avatarIoC=(<Avatar userName={user.name} totalOrders={orders.total}/>);
+   
 
     return (
         <div>
-            <Page avatar={avatarIoC}/>
+            <Page userName={user.name} totalOrders={orders.total}/>
         </div>
     );
 }

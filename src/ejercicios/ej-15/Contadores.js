@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import usePrevious from "./usePrevious";
 
 const Contadores = (props) => {
-    const [count1, setCount1] = useState(0);
-    const [count2, setCount2] = useState(0);
-    const [count3, setCount3] = useState(0);
+  
+    const [count1, setCount1] = useState(parseInt(props.count1));
+    const [count2, setCount2] = useState(parseInt(props.count2));
+    const [count3, setCount3] = useState(parseInt(props.count3));
     const [lastChange, setLastChange] = useState(new Date()); // Last change debe almacenar la hora en la que se modificó el último contador
     const [history, setHistory] = useState([]); // Almacena el historico de cambios en los contadores ej. ["Contador-1: 2 -> 3; Contador-2: sin cambios ; Contador-3: sin cambios"]
 
@@ -13,10 +14,11 @@ const Contadores = (props) => {
     const prevCount2 = usePrevious(count2);
     const prevCount3 = usePrevious(count3);
 
+    
     // -------------------------------------------------------------------------        
     // ----------  MODIFICA A PARTIR DE ESTE PUNTO -----------------------------
     // -------------------------------------------------------------------------    
-
+   
 
         // Implementa un useEffect que simule el método componentDidMount para incluir en history el valor inicial de cada contador 
         // ej. ["Valores iniciales -> Contador-1: 0; Contador-2: 0; Contador-3: 0"]
@@ -27,20 +29,36 @@ const Contadores = (props) => {
         // NO está permitido modificar lastChange en estos 3 useEffect
 
             // useEffect CONTADOR 1
+         useEffect(()=>{
+             let con1=count1;
+                setHistory([...history, `contador-1:${prevCount1}->${con1}`])
+         },[count1])
 
-            // useEffect CONTADOR 2
-
-            // useEffect CONTADOR 3
+         useEffect(()=>{
+             let con2 =count2;
+                 setHistory([...history , `contador-2:${prevCount2}->${con2}`])
+                
+         }, [count2])
+         
+         useEffect(()=>{
+             let con3=count3;
+                setHistory([...history, `contador-3:${prevCount3}->${con3}`])
+         }, [count3]);
+       
 
 
         // Implementa un useEffect para detectar un cambio en cualquiera de los contadores que actualice lastChange con la fecha 
         // del último cambio (hint: new Date())
-
-
+         useEffect(()=>{
+            setLastChange((new Date()))
+         }, [count1, count2, count3])
 
         // BONUS: Modifica el componente Contadores para poder asignar valores iniciales a los contadores de forma opcional, 
         // si no se define un valor inicial por prop, el valor inicial será 0
-
+   
+           
+       
+    
     // -------------------------------------------------------------------------    
     // ---------- AQUÍ TERMINA EL BLOQUE QUE PUEDES MODIFICAR ------------------
     // -------------------------------------------------------------------------  
