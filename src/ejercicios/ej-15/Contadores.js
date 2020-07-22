@@ -4,7 +4,7 @@ import usePrevious from "./usePrevious";
 const Contadores = (props) => {
   
     const [count1, setCount1] = useState(parseInt(props.count1));
-    const [count2, setCount2] = useState(parseInt(props.count2));
+    const [count2, setCount2] = useState(eval(props.count2));
     const [count3, setCount3] = useState(parseInt(props.count3));
     const [lastChange, setLastChange] = useState(new Date()); // Last change debe almacenar la hora en la que se modificó el último contador
     const [history, setHistory] = useState([]); // Almacena el historico de cambios en los contadores ej. ["Contador-1: 2 -> 3; Contador-2: sin cambios ; Contador-3: sin cambios"]
