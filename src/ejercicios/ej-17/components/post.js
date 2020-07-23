@@ -11,12 +11,13 @@ function Posts(){
   return(
     
       <div>
+        <h1>Posts Grid</h1>
         <ul>
           {
             undefinedState
             ?<li>loading...</li>
             : postPost.map((value)=>
-            <li>{value.title}</li>
+            <li>{value.userId}</li>
             )
           }
         </ul>
