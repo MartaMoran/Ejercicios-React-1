@@ -2,7 +2,8 @@ import React, {useContext, useEffect, useState} from 'react';
 import {UsersContext, PostsContext} from '../App';
 import { usersApi } from '../api';
 
-function Posts(){
+
+function Posts(props){
     const userPost=useContext(UsersContext);
     const postPost= useContext(PostsContext);
    
@@ -12,15 +13,18 @@ function Posts(){
     
       <div>
         <h1>Posts Grid</h1>
-        <ul>
+       
           {
             undefinedState
-            ?<li>loading...</li>
-            : postPost.map((value)=>
-            <li>{value.userId}</li>
-            )
+           
+            ?<p>loading...</p>
+            : postPost.map((post)=>
+            <p>{userPost.find((value)=>value.id===post.userId).email}
+            {post.body}</p>) 
+            
+            
           }
-        </ul>
+       
       </div>  
   );
 }
